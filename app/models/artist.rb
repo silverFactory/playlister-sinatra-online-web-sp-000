@@ -10,7 +10,4 @@ class Artist < ActiveRecord::Base
     unslug = slug.split("-").map { |w| w.capitalize() }
     Artist.find_by(name: "#{unslug.join(" ")}")
   end
-  def self.unslug(slug)
-    slug.split("-").join(" ")
-  end
 end
