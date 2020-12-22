@@ -5,9 +5,9 @@ class Artist < ActiveRecord::Base
   def slug
     self.name.downcase.split(" ").join("-")
   end
-
   def self.find_by_slug(slug)
-    unslug = slug.split("-").map { |w| w.capitalize() }
-    Artist.find_by(name: "#{unslug.join(" ")}")
+    Artist.all.find do |artist|
+      artist.slug == slug
+    end
   end
 end
